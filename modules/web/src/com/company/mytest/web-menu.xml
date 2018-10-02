@@ -5,5 +5,8 @@
         <item screen="mytest$Customer.browse"/>
         <item screen="mytest$Individual.browse"/>
         <item screen="mytest$Company.browse"/>
+        <item screen="mytest$Employee.browse"/>
+        <item screen="mytest$Repair.browse"/>
+        <item screen="mytest$CarServiceCenter.browse"/>
     </menu>
 </menu-config>

@@ -6,5 +6,8 @@
         <class>com.company.mytest.entity.Customer</class>
         <class>com.company.mytest.entity.Individual</class>
         <class>com.company.mytest.entity.Company</class>
+        <class>com.company.mytest.entity.CarServiceCenter</class>
+        <class>com.company.mytest.entity.Employee</class>
+        <class>com.company.mytest.entity.Repair</class>
     </persistence-unit>
 </persistence>

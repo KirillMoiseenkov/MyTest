@@ -9,4 +9,32 @@
     <view class="com.company.mytest.entity.Company"
           extends="_local"
           name="company-view"/>
+    <view class="com.company.mytest.entity.Employee"
+          extends="_local"
+          name="employee-view">
+        <property name="center"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.mytest.entity.Repair"
+          extends="_local"
+          name="repair-with-center-employee">
+        <property name="center"
+                  view="_minimal"/>
+        <property name="employee"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.mytest.entity.CarServiceCenter"
+          extends="_local"
+          name="carServiceCenter-with-repair-employerr">
+        <property name="repair"
+                  view="_minimal"/>
+        <property name="employee"
+                  view="_minimal"/>
+    </view>
+    <view class="com.company.mytest.entity.Employee"
+          extends="_local"
+          name="employee-with-center">
+        <property name="center"
+                  view="_minimal"/>
+    </view>
 </views>

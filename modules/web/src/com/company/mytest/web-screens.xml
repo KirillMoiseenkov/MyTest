@@ -13,4 +13,16 @@
             template="com/company/mytest/web/company/company-browse.xml"/>
     <screen id="mytest$Company.edit"
             template="com/company/mytest/web/company/company-edit.xml"/>
+    <screen id="mytest$Employee.browse"
+            template="com/company/mytest/web/employee/employee-browse.xml"/>
+    <screen id="mytest$Employee.edit"
+            template="com/company/mytest/web/employee/employee-edit.xml"/>
+    <screen id="mytest$Repair.browse"
+            template="com/company/mytest/web/repair/repair-browse.xml"/>
+    <screen id="mytest$Repair.edit"
+            template="com/company/mytest/web/repair/repair-edit.xml"/>
+    <screen id="mytest$CarServiceCenter.browse"
+            template="com/company/mytest/web/carservicecenter/car-service-center-browse.xml"/>
+    <screen id="mytest$CarServiceCenter.edit"
+            template="com/company/mytest/web/carservicecenter/car-service-center-edit.xml"/>
 </screen-config>

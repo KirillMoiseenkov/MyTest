@@ -8,7 +8,7 @@
     <dsContext>
         <datasource id="carServiceCenterDs"
                     class="com.company.mytest.entity.CarServiceCenter"
-                    view="carServiceCenter-with-repair-employerr">
+                    view="carServiceCenter-with-repair-employer-city">
             <collectionDatasource id="repairDs"
                                   property="repair"/>
             <collectionDatasource id="employeeDs"
@@ -23,6 +23,7 @@
                     datasource="carServiceCenterDs">
             <column width="250px">
                 <field property="name"/>
+                <field property="city"/>
                 <field property="phone"/>
                 <field property="adress"/>
             </column>

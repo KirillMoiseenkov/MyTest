@@ -13,6 +13,8 @@ import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import javax.persistence.OneToMany;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @NamePattern("%s|name")
 @Table(name = "MYTEST_CAR_SERVICE_CENTER")
@@ -22,6 +24,10 @@ public class CarServiceCenter extends StandardEntity {
 
     @Column(name = "NAME")
     protected String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CITY_ID")
+    protected City city;
 
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
@@ -44,6 +50,15 @@ public class CarServiceCenter extends StandardEntity {
         inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID"))
     @ManyToMany
     protected List<Customer> customer;
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
 
     public void setRepair(List<Repair> repair) {
         this.repair = repair;

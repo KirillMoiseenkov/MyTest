@@ -9,5 +9,6 @@
         <class>com.company.mytest.entity.CarServiceCenter</class>
         <class>com.company.mytest.entity.Employee</class>
         <class>com.company.mytest.entity.Repair</class>
+        <class>com.company.mytest.entity.City</class>
     </persistence-unit>
 </persistence>

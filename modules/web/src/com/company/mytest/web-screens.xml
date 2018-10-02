@@ -25,4 +25,8 @@
             template="com/company/mytest/web/carservicecenter/car-service-center-browse.xml"/>
     <screen id="mytest$CarServiceCenter.edit"
             template="com/company/mytest/web/carservicecenter/car-service-center-edit.xml"/>
+    <screen id="mytest$City.browse"
+            template="com/company/mytest/web/city/city-browse.xml"/>
+    <screen id="mytest$City.edit"
+            template="com/company/mytest/web/city/city-edit.xml"/>
 </screen-config>

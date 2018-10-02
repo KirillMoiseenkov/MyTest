@@ -47,6 +47,7 @@ create table MYTEST_CAR_SERVICE_CENTER (
     DELETED_BY varchar(50),
     --
     NAME varchar(255),
+    CITY_ID varchar(36),
     PHONE varchar(255),
     ADRESS varchar(255),
     --
@@ -105,3 +106,20 @@ create table MYTEST_REPAIR_EMPLOYEE_LINK (
     primary key (REPAIR_ID, EMPLOYEE_ID)
 )^
 -- end MYTEST_REPAIR_EMPLOYEE_LINK
+-- begin MYTEST_CITY
+create table MYTEST_CITY (
+    ID varchar(36) not null,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    NAME varchar(255) not null,
+    CODE integer not null,
+    --
+    primary key (ID)
+)^
+-- end MYTEST_CITY

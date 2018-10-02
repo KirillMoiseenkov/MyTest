@@ -16,13 +16,6 @@
             <collectionDatasource id="customersDs"
                                   property="customer"/>
         </datasource>
-        <collectionDatasource id="allCustomersDs"
-                              class="com.company.mytest.entity.Customer"
-                              view="customer-view">
-            <query>
-                <![CDATA[select e from mytest$Customer e]]>
-            </query>
-        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>

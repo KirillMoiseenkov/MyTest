@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.mytest.web.carservicecenter.CarServiceCenterEdit"
+        datasource="carServiceCenterDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.mytest.web.carservicecenter">
+    <dsContext>
+        <datasource id="carServiceCenterDs"
+                    class="com.company.mytest.entity.CarServiceCenter"
+                    view="carServiceCenter-with-repair-employerr">
+            <collectionDatasource id="repairDs"
+                                  property="repair"/>
+            <collectionDatasource id="employeeDs"
+                                  property="employee"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="carServiceCenterDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="phone"/>
+                <field property="adress"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="repairBox"
+                  caption="msg://com.company.mytest.entity/CarServiceCenter.repair">
+            <table id="repairTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="description"/>
+                </columns>
+                <rows datasource="repairDs"/>
+                <buttonsPanel>
+                    <button action="repairTable.create"/>
+                    <button action="repairTable.edit"/>
+                    <button action="repairTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <groupBox id="employeeBox"
+                  caption="msg://com.company.mytest.entity/CarServiceCenter.employee">
+            <table id="employeeTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="firstName"/>
+                </columns>
+                <rows datasource="employeeDs"/>
+                <buttonsPanel>
+                    <button action="employeeTable.create"/>
+                    <button action="employeeTable.edit"/>
+                    <button action="employeeTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.company.mytest.web.repair.RepairBrowse"
+        focusComponent="repairsTable"
+        lookupComponent="repairsTable"
+        messagesPack="com.company.mytest.web.repair">
+    <dsContext>
+        <groupDatasource id="repairsDs"
+                         class="com.company.mytest.entity.Repair"
+                         view="repair-with-center-employee">
+            <query>
+                <![CDATA[select e from mytest$Repair e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="repairsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="repairsTable"
+                datasource="repairsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="repairsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="description"/>
+                <column id="center"/>
+            </columns>
+            <rows datasource="repairsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="repairsTable.create"/>
+                <button id="editBtn"
+                        action="repairsTable.edit"/>
+                <button id="removeBtn"
+                        action="repairsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

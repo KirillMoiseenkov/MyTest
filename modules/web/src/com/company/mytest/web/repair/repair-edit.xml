@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.company.mytest.web.repair.RepairEdit"
+        datasource="repairDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.company.mytest.web.repair">
+    <dsContext>
+        <datasource id="repairDs"
+                    class="com.company.mytest.entity.Repair"
+                    view="repair-with-center-employee">
+            <collectionDatasource id="employeeDs"
+                                  property="employee"/>
+        </datasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="repairDs">
+            <column width="250px">
+                <field property="description"/>
+                <field property="center"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="employeeBox"
+                  caption="msg://com.company.mytest.entity/Repair.employee">
+            <table id="employeeTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="add"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="firstName"/>
+                </columns>
+                <rows datasource="employeeDs"/>
+                <buttonsPanel>
+                    <button action="employeeTable.add"/>
+                    <button action="employeeTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -13,8 +13,10 @@
                                   property="repair"/>
             <collectionDatasource id="employeeDs"
                                   property="employee"/>
+            <collectionDatasource id="customersDs"
+                                  property="customer"/>
         </datasource>
-        <collectionDatasource id="customersDs"
+        <collectionDatasource id="allCustomersDs"
                               class="com.company.mytest.entity.Customer"
                               view="customer-view">
             <query>
@@ -94,6 +96,7 @@
                            width="350px">
                         <actions>
                             <action id="create"/>
+                            <action id="add"/>
                             <action id="remove"/>
                         </actions>
                         <columns>
@@ -103,9 +106,10 @@
                         </columns>
                         <rows datasource="customersDs"/>
                         <buttonsPanel>
-                            <button id="button"
-                                    action="customerTable.create"/>
-                            <button action="customerTable.remove"/>
+                            <button id="customerAdd"
+                                    action="customerTable.add"/>
+                            <button id="customerRemove"
+                                    action="customerTable.remove"/>
                         </buttonsPanel>
                     </table>
                 </groupBox>

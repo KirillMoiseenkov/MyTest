@@ -32,6 +32,11 @@
                   view="_minimal"/>
         <property name="city"
                   view="_minimal"/>
+        <property name="customer"
+                  view="_minimal">
+            <property name="phone"/>
+            <property name="email"/>
+        </property>
     </view>
     <view class="com.company.mytest.entity.Employee"
           extends="_local"

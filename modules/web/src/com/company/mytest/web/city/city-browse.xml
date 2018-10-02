@@ -8,7 +8,7 @@
     <dsContext>
         <groupDatasource id="citiesDs"
                          class="com.company.mytest.entity.City"
-                         view="_local">
+                         view="city-view">
             <query>
                 <![CDATA[select e from mytest$City e]]>
             </query>
@@ -32,6 +32,7 @@
             </actions>
             <columns>
                 <column id="name"/>
+                <column id="defaultCity"/>
                 <column id="code"/>
             </columns>
             <rows datasource="citiesDs"/>

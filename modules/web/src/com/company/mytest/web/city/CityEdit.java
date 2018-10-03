@@ -25,7 +25,7 @@ public class CityEdit extends AbstractEditor<City> {
     @Override
     protected boolean postCommit(boolean committed, boolean close) {
 
-        City city = getItem();
+      /*  City city = getItem();
 
         LoadContext loadContext = LoadContext.create(City.class)
                 .setQuery(LoadContext.createQuery
@@ -39,7 +39,7 @@ public class CityEdit extends AbstractEditor<City> {
 
        CommitContext commitContext = new CommitContext(cityList);
 
-       dataManager.commit(commitContext);
+       dataManager.commit(commitContext);*/
 
         return super.postCommit(committed, close);
     }

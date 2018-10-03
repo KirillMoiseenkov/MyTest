@@ -6,7 +6,9 @@ import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.annotation.Listeners;
 
+@Listeners("mytest_CityListener")
 @NamePattern("%s|name")
 @Table(name = "MYTEST_CITY")
 @Entity(name = "mytest$City")

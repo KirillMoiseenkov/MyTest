@@ -17,8 +17,9 @@ public class City extends StandardEntity {
     @Column(name = "NAME", nullable = false)
     protected String name;
 
-    @Column(name = "DEFAULT_CITY")
-    protected Boolean defaultCity;
+    @NotNull(message = "false")
+    @Column(name = "DEFAULT_CITY", nullable = false)
+    protected Boolean defaultCity = false;
 
     @Column(name = "CODE", nullable = false)
     protected Integer code;

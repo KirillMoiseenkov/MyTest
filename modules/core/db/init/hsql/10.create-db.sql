@@ -118,7 +118,7 @@ create table MYTEST_CITY (
     DELETED_BY varchar(50),
     --
     NAME varchar(255) not null,
-    DEFAULT_CITY boolean,
+    DEFAULT_CITY boolean not null,
     CODE integer not null,
     --
     primary key (ID)

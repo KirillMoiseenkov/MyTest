@@ -12,6 +12,9 @@ public class CityListener implements BeforeInsertEntityListener<City> {
 
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(CityListener.class);
 
+
+
+
     @Transactional
     @Override
     public void onBeforeInsert(City entity, EntityManager entityManager) {

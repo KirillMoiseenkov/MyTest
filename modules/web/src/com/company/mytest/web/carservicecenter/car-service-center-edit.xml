@@ -21,7 +21,7 @@
                 width="800"/>
     <layout expand="windowActions"
             spacing="true">
-        <tabSheet id="Edit">
+        <tabSheet id="editTabSheet">
             <tab id="foreingTab"
                  caption="Edit"
                  margin="true,false,false,false"

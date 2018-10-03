@@ -21,7 +21,12 @@
         <property name="center"
                   view="_minimal"/>
         <property name="employee"
-                  view="_minimal"/>
+                  view="_minimal">
+            <property name="lastName"/>
+            <property name="bithDate"/>
+            <property name="email"/>
+            <property name="salary"/>
+        </property>
     </view>
     <view class="com.company.mytest.entity.CarServiceCenter"
           extends="_local"

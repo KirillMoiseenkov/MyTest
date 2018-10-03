@@ -35,6 +35,10 @@
                 </actions>
                 <columns>
                     <column id="firstName"/>
+                    <column id="lastName"/>
+                    <column id="bithDate"/>
+                    <column id="email"/>
+                    <column id="salary"/>
                 </columns>
                 <rows datasource="employeeDs"/>
                 <buttonsPanel>

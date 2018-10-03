@@ -17,7 +17,7 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
     @Override
     protected void initNewItem(CarServiceCenter item) {
 
-        cityService.getDefaultCity();
+            item.setCity(cityService.getDefaultCity());
 //        System.out.println(item.getAdress());
     //    item.setAdress(cityService.getDefaultCity().getName());
 

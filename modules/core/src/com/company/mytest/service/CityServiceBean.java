@@ -19,9 +19,10 @@ public class CityServiceBean implements CityService {
     @Transactional(readOnly = true)
     public City getDefaultCity() {
 
-        log.error(persistence.getEntityManager().createQuery("select p from MYTEST_CITY p").toString());
+//       (City) persistence.getEntityManager().createQuery("select e from mytest$City e where e.defaultCity = TRUE").getSingleResult();
+
+       return (City) persistence.getEntityManager().createQuery("select e from mytest$City e where e.defaultCity = TRUE").getSingleResult();
 
 
-        return  new City();
     }
 }

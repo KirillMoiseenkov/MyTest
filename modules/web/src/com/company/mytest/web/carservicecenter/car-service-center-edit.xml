@@ -16,6 +16,13 @@
             <collectionDatasource id="customersDs"
                                   property="customer"/>
         </datasource>
+        <collectionDatasource id="individualsDs"
+                              class="com.company.mytest.entity.Individual">
+            <query>
+                <![CDATA[select e from mytest$Individual e
+where e.id = :ds$customersDs.id]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>

@@ -2,6 +2,7 @@ package com.company.mytest.web.carservicecenter;
 
 import com.company.mytest.entity.Customer;
 import com.company.mytest.service.CityService;
+import com.haulmont.cuba.core.entity.Entity;
 import com.haulmont.cuba.gui.components.*;
 import com.company.mytest.entity.CarServiceCenter;
 import com.haulmont.cuba.gui.data.CollectionDatasource;
@@ -20,11 +21,24 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
     @Inject
     TabSheet editTabSheet;
 
+    @Inject
+    protected Table customerTable;
+
 
 
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
+
+
+
+        customerTable.addGeneratedColumn("TypeOfCustomer", new Table.ColumnGenerator() {
+            @Override
+            public Component generateCell(Entity entity) {
+
+                return new Table.PlainTextCell(entity.getClass().getSimpleName());
+            }
+        });
 
         customersDs.addCollectionChangeListener(e -> {
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 import java.util.UUID;
 
 @Service(CityService.NAME)
@@ -21,10 +22,18 @@ public class CityServiceBean implements CityService {
     @Override
     @Transactional(readOnly = true)
     public City getDefaultCity() {
+        City city;
+        try {
+            city = (City) persistence.getEntityManager().createQuery("select e from mytest$City e where e.defaultCity = TRUE").getSingleResult();
+            return city;
+        }catch (NoResultException e) {
+                log.error("the list of cities is empty: " + e);
 
-        return (City) persistence.getEntityManager().createQuery("select e from mytest$City e where e.defaultCity = TRUE").getSingleResult();
+                return null;
+            }
+        }
 
-    }
+
 
     @Override
     @Transactional

@@ -22,6 +22,8 @@ public class CityEdit extends AbstractEditor<City> {
     @Inject
     DataManager dataManager;
 
+
+
     @Override
     protected boolean postCommit(boolean committed, boolean close) {
 

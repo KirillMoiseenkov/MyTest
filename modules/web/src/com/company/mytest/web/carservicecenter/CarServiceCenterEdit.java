@@ -1,5 +1,6 @@
 package com.company.mytest.web.carservicecenter;
 
+import com.company.mytest.entity.City;
 import com.company.mytest.entity.Customer;
 import com.company.mytest.service.CityService;
 import com.haulmont.cuba.core.entity.Entity;
@@ -31,7 +32,6 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
         super.init(params);
 
 
-
         customerTable.addGeneratedColumn("TypeOfCustomer", new Table.ColumnGenerator() {
             @Override
             public Component generateCell(Entity entity) {
@@ -45,7 +45,6 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
             Collection<Customer> customerList = customersDs.getItems();
             TabSheet.Tab tab = editTabSheet.getTab("customerTab");
 
-
             if(customerList.size() != 0) {
             tab.setCaption("Customer(" + customerList.size() + ")");
             }else
@@ -57,6 +56,7 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
 
     @Override
     protected void initNewItem(CarServiceCenter item) {
-         item.setCity(cityService.getDefaultCity());
+
+        item.setCity(cityService.getDefaultCity());
     }
 }

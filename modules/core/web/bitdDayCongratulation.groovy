@@ -1,3 +1,7 @@
 package com.company.mytest.core
 
-println "Groovy script"
+String name = binding.getVariable("age")
+
+
+
+return name

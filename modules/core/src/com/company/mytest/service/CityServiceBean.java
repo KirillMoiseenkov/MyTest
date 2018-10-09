@@ -1,6 +1,7 @@
 package com.company.mytest.service;
 
 import com.company.mytest.entity.City;
+import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.Query;
 import com.haulmont.cuba.core.global.Scripting;
@@ -12,7 +13,11 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
 import java.io.File;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service(CityService.NAME)
 public class CityServiceBean implements CityService {
@@ -53,16 +58,41 @@ public class CityServiceBean implements CityService {
     @Transactional(readOnly = true)
     public void getAllCity(){
 
-        scripting.runGroovyScript("bitdDayCongratulation.groovy",new Binding());
+        List list = persistence.getEntityManager().createNativeQuery("select MYTEST_EMPLOYEE.FIRST_NAME," +
+                "MYTEST_EMPLOYEE.BITH_DATE, MYTEST_CAR_SERVICE_CENTER.NAME, " +
+                "to_char(extract (year from now()) - extract (year from MYTEST_EMPLOYEE.BITH_DATE), '99') as age" +
+                " from MYTEST_EMPLOYEE" +
+                " LEFT JOIN MYTEST_CAR_SERVICE_CENTER ON MYTEST_CAR_SERVICE_CENTER.ID = MYTEST_EMPLOYEE.CENTER_ID" +
+                " WHERE extract (day from MYTEST_EMPLOYEE.BITH_DATE) = extract (day from now())" +
+                " AND extract (month from MYTEST_EMPLOYEE.BITH_DATE) = extract (month from now())").getResultList();
 
 
-        List list = persistence.getEntityManager().createNativeQuery("select * from MYTEST_EMPLOYEE").getResultList();
 
-        for (Iterator it = list.iterator(); it.hasNext(); ) {
-            Object[] row = (Object[]) it.next();
-            Date date = (Date) row[10];
-            System.out.println(date);
-        }
+        LocalDate localDate = LocalDate.now();
+
+        list.forEach(o ->{
+
+            Object[] objects = (Object[]) o;
+
+            List<Object> objectList = Arrays.asList(objects);
+
+            Date date = (Date) objectList.get(1);
+
+            System.out.println(date.getDay() + " " + date.getMonth() + " "  + date.getYear());
+
+          //  LocalDate newLocalDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        });
+
+
+       /* Binding binding = new Binding();
+        binding.setVariable("age","privt");
+
+
+        String body = scripting.runGroovyScript("bitdDayCongratulation.groovy",binding);
+*/
+
+
 
     }
 

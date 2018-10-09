@@ -26,7 +26,6 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
     protected Table customerTable;
 
 
-
     @Override
     public void init(Map<String, Object> params) {
         super.init(params);
@@ -45,9 +44,9 @@ public class CarServiceCenterEdit extends AbstractEditor<CarServiceCenter> {
             Collection<Customer> customerList = customersDs.getItems();
             TabSheet.Tab tab = editTabSheet.getTab("customerTab");
 
-            if(customerList.size() != 0) {
-            tab.setCaption("Customer(" + customerList.size() + ")");
-            }else
+            if (customerList.size() != 0) {
+                tab.setCaption("Customer(" + customerList.size() + ")");
+            } else
                 tab.setCaption("Customer");
 
         });

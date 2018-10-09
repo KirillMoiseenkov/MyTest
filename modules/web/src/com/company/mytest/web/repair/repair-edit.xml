@@ -9,9 +9,17 @@
         <datasource id="repairDs"
                     class="com.company.mytest.entity.Repair"
                     view="repair-with-center-employee">
-            <collectionDatasource id="employeeDs"
-                                  property="employee"/>
+            <datasource id="employeeDs"
+                        property="employee"/>
         </datasource>
+        <collectionDatasource id="employeesDs"
+                              class="com.company.mytest.entity.Employee">
+            <query>
+                <![CDATA[select e from mytest$Employee e
+where e.center.id = :ds$repairDs.center.id
+]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -22,31 +30,10 @@
             <column width="250px">
                 <field property="description"/>
                 <field property="center"/>
+                <field optionsDatasource="employeesDs"
+                       property="employee"/>
             </column>
         </fieldGroup>
-        <groupBox id="employeeBox"
-                  caption="msg://com.company.mytest.entity/Repair.employee">
-            <table id="employeeTable"
-                   height="200px"
-                   width="100%">
-                <actions>
-                    <action id="add"/>
-                    <action id="remove"/>
-                </actions>
-                <columns>
-                    <column id="firstName"/>
-                    <column id="lastName"/>
-                    <column id="bithDate"/>
-                    <column id="email"/>
-                    <column id="salary"/>
-                </columns>
-                <rows datasource="employeeDs"/>
-                <buttonsPanel>
-                    <button action="employeeTable.add"/>
-                    <button action="employeeTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

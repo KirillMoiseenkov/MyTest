@@ -13,22 +13,18 @@ public class CityListener implements BeforeInsertEntityListener<City> {
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(CityListener.class);
 
 
-
-
     @Transactional
     @Override
     public void onBeforeInsert(City entity, EntityManager entityManager) {
 
 
+        if (entity.getDefaultCity()) {
 
-     if(entity.getDefaultCity()) {
+            Query query = entityManager.createQuery("UPDATE mytest$City e SET e.defaultCity = FALSE WHERE e.id <> :id")
+                    .setParameter("id", entity.getId());
 
-         Query query = entityManager.createQuery("UPDATE mytest$City e SET e.defaultCity = FALSE WHERE e.id <> :id")
-                 .setParameter("id", entity.getId());
-
-         log.info( ((Integer) query.executeUpdate()).toString());
-     }
-
+            log.info(((Integer) query.executeUpdate()).toString());
+        }
 
 
     }

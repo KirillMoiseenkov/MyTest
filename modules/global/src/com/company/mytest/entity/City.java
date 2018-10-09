@@ -4,9 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.annotation.Listeners;
+
+import javax.persistence.UniqueConstraint;
 
 @Listeners("mytest_CityListener")
 @NamePattern("%s|name")
@@ -16,7 +19,7 @@ public class City extends StandardEntity {
     private static final long serialVersionUID = 6765023321627816915L;
 
     @NotNull
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME", nullable = false, unique = true)
     protected String name;
 
     @NotNull(message = "false")

@@ -7,14 +7,18 @@ import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.core.global.LoadContext;
 import com.haulmont.cuba.gui.components.AbstractEditor;
 import com.company.mytest.entity.City;
+import com.haulmont.cuba.gui.data.Datasource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Map;
 
 public class CityEdit extends AbstractEditor<City> {
 
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(CityEdit.class);
+    private static final Logger log = LoggerFactory.getLogger(CityEdit.class);
 
     @Inject
     CityService cityService;
@@ -22,10 +26,17 @@ public class CityEdit extends AbstractEditor<City> {
     @Inject
     DataManager dataManager;
 
-
+    @Override
+    public void init(Map<String, Object> params) {
+        cityService.getAllCity();
+        super.init(params);
+    }
 
     @Override
     protected boolean postCommit(boolean committed, boolean close) {
+
+
+
 
       /*  City city = getItem();
 

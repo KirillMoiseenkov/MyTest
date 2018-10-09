@@ -7,11 +7,14 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
+
 import javax.persistence.OneToMany;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -27,6 +30,7 @@ public class CarServiceCenter extends StandardEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CITY_ID")
+    @OnDeleteInverse(DeletePolicy.DENY)
     protected City city;
 
     @Composition
@@ -46,8 +50,8 @@ public class CarServiceCenter extends StandardEntity {
     protected String adress;
 
     @JoinTable(name = "MYTEST_CAR_SERVICE_CENTER_CUSTOMER_LINK",
-        joinColumns = @JoinColumn(name = "CAR_SERVICE_CENTER_ID"),
-        inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID"))
+            joinColumns = @JoinColumn(name = "CAR_SERVICE_CENTER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CUSTOMER_ID"))
     @ManyToMany
     protected List<Customer> customer;
 

@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
 
@@ -25,11 +26,18 @@ public class Repair extends StandardEntity {
     @JoinColumn(name = "CENTER_ID")
     protected CarServiceCenter center;
 
-    @JoinTable(name = "MYTEST_REPAIR_EMPLOYEE_LINK",
-        joinColumns = @JoinColumn(name = "REPAIR_ID"),
-        inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_ID"))
-    @ManyToMany
-    protected List<Employee> employee;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "EMPLOYEE_ID")
+    protected Employee employee;
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
 
     public void setDescription(String description) {
         this.description = description;
@@ -45,14 +53,6 @@ public class Repair extends StandardEntity {
 
     public CarServiceCenter getCenter() {
         return center;
-    }
-
-    public void setEmployee(List<Employee> employee) {
-        this.employee = employee;
-    }
-
-    public List<Employee> getEmployee() {
-        return employee;
     }
 
 

@@ -6,5 +6,4 @@ import com.company.mytest.entity.Employee;
 public class EmployeeEdit extends AbstractEditor<Employee> {
 
 
-
 }

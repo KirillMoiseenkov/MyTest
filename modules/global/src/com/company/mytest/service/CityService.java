@@ -11,7 +11,5 @@ public interface CityService {
 
     City getDefaultCity();
 
-    void getAllCity();
-
     void resetDefaultCity(UUID id);
 }

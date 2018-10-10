@@ -1,6 +1,10 @@
 package com.company.mytest.core;
 
 import com.company.mytest.core.config.EmailConfig;
+import com.company.mytest.service.CityService;
+import com.company.mytest.service.EmployeeService;
+import com.company.mytest.service.EmployeeServiceBean;
+import com.haulmont.bali.util.ParamsMap;
 import com.haulmont.cuba.core.Persistence;
 import com.haulmont.cuba.core.app.EmailService;
 import com.haulmont.cuba.core.global.EmailInfo;
@@ -26,26 +30,35 @@ public class EmployeeWorker implements EmployeeWorkerMBean {
     @Inject
     Persistence persistence;
 
+    @Inject
+    EmployeeService employeeService;
+
     @Override
     @Authenticated
     public void sendGreetings() {
 
+        employeeService.updateEmploeeListByBirthDay();
 
+        employeeService.castToListMap();
 
-        EmailInfo emailInfo = new EmailInfo("moiseenkov@haulmont.com", "caption", "body");
+        employeeService.getDateList().forEach(components -> {
 
-        emailService.sendEmailAsync(emailInfo);
+            Binding binding = new Binding();
 
-        Integer integer = scripting.evaluateGroovy("2+9", new Binding());
+            components.forEach(binding::setVariable);
 
-        System.out.println(integer);
+            String body = scripting.runGroovyScript("bitdDayCongratulation.groovy", binding);
+
+            EmailInfo emailInfo = new EmailInfo("moiseenkov@haulmont.com", "Happy BirthDAY", emailConfig.getExFromAddress(), body);
+
+            emailService.sendEmailAsync(emailInfo);
+        });
     }
 
 
     @Override
     @Authenticated
-    public void setFromAdress(String adress)
-    {
+    public void setFromAdress(String adress) {
         emailConfig.setExFromAddress(adress);
     }
 

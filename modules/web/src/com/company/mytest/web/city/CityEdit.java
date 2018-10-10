@@ -28,7 +28,6 @@ public class CityEdit extends AbstractEditor<City> {
 
     @Override
     public void init(Map<String, Object> params) {
-        cityService.getAllCity();
         super.init(params);
     }
 

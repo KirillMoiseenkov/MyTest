@@ -12,6 +12,8 @@
             <map>
                 <entry key="mytest_CityService"
                        value="com.company.mytest.service.CityService"/>
+                <entry key="mytest_EmployeeService"
+                       value="com.company.mytest.service.EmployeeService"/>
             </map>
         </property>
     </bean>
